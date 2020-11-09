@@ -87,7 +87,8 @@ public class Menu{
         Scanner entrada = new Scanner(System.in);
         double promedio=0,sumap=0;
         int numero []=new int[10];
-        int aprobo=0,reprobo=0;
+        int aprobo=0,reprobo=0,mayoresp=0,mayor,menor;
+        menor=mayor=numero[0];
         for(int i=0;i<=9;i++){
             System.out.println(i+1+".Ingresa la calificacion");
             numero[i]=entrada.nextInt();
@@ -98,13 +99,30 @@ public class Menu{
             }
             promedio=promedio+numero[i];
             sumap=promedio/10;
+            if(menor>numero[i])
+			{
+				menor=numero[i];
+			}
+			if(mayor<numero[i])
+			{
+				mayor=numero[i];
+            }
         }
+        
         System.out.println("");
         for(int j:numero){
             System.out.println(j);
         }  
         System.out.println("");       
-        System.out.println("Promedio:"+promedio);
+        System.out.println("Promedio: "+sumap);
+        for (int i = 0; i < numero.length; i++) {
+            if (numero[i] > sumap) {
+                mayoresp++;
+            }    
+        }
+        System.out.println("Calificaiones mayores al promedio: "+mayoresp);
+        System.out.println("La calificacion mas alta "+mayor);
+        System.out.println("Calificacion mas baja "+menor);
         System.out.println("Alumnos aprobados "+aprobo);
         System.out.println("Alumnos reprobados "+reprobo);
     }
